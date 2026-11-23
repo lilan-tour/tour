@@ -27,6 +27,37 @@ window.TRIP = {
   ],
   fuji: { x: 352, y: 178 },
 
+  preparation: {
+    date: '2026-11-27', weekday: '周五', city: '北京',
+    title: '出游检查',
+    highlights: ['证件', '随身包', '行李箱'],
+    checklist: [
+      {
+        group: '随身包',
+        items: [
+          { id: 'passport', text: '护照原件、日本签证或电子签证凭证', note: '放在随手能拿到的位置，明早出门前再摸一遍。' },
+          { id: 'tickets', text: '往返机票、酒店确认单和门票', note: '把订单和可离线使用的凭证存到手机，记下首晚酒店的日文地址。' },
+          { id: 'entry', text: 'Visit Japan Web 入境与海关信息', note: '确认信息填妥，提前打开二维码页面。' },
+          { id: 'phone', text: '手机、充电头和充电线' },
+          { id: 'power-bank', text: '充电宝（如携带）', note: '放随身包，先核对航司的携带要求。' },
+          { id: 'essentials', text: '银行卡、眼镜和个人常用药（按需）' },
+          { id: 'overnight', text: '羽田过夜小包', note: '装一套换洗衣物、牙刷和纸巾，转机时好拿。' }
+        ]
+      },
+      {
+        group: '行李箱与出门前',
+        items: [
+          { id: 'clothes', text: '保暖外套、可叠穿的上衣和换洗衣物', note: '带上内衣、袜子，怕冷可以加围巾。' },
+          { id: 'shoes', text: '走路舒服的鞋和折叠伞' },
+          { id: 'toiletries', text: '洗漱用品和护肤品', note: '按航司要求分好随身和托运行李。' },
+          { id: 'adapter', text: '转换插头（按需）', note: '使用三脚插头的设备可以备一个适配器。' },
+          { id: 'bag', text: '给伴手礼留出空间，称一下行李' },
+          { id: 'airport', text: '确认去机场的交通，设好闹钟', note: '11/28 08:30 从北京首都机场 T3 出发，今晚把明早要带的东西放到门口。' }
+        ]
+      }
+    ]
+  },
+
   days: [
     // ───────────────────────── Day 1 ─────────────────────────
     {
@@ -47,12 +78,8 @@ window.TRIP = {
         },
         {
           time: '14:00', type: 'note', title: '机场准备：现金、交通卡、网络',
-          summary: '取现 · Suica · eSIM',
-          tips: [
-            '在 T3 的 7-Eleven ATM 取 3–5 万日元现金（支持银联卡）',
-            'iPhone 在「钱包」里添加 Suica；安卓手机在京急或 JR 售票处买游客用的实体卡 Welcome Suica',
-            '开启提前买好的 eSIM 或领取随身 Wi-Fi'
-          ]
+          summary: '日元现金、交通卡和手机网络均已准备',
+          tips: ['落地后确认手机能上网，再用交通卡刷卡进站。']
         },
         {
           time: '14:15', type: 'transit', title: '羽田 T3 → 东日本桥（酒店）',
@@ -1360,7 +1387,7 @@ window.TRIP = {
       group: '10 月底前',
       due: '10/31 前',
       items: [
-        { id: 'esim', text: '日本 eSIM 或随身 Wi-Fi' },
+        { id: 'esim', text: '日本手机网络', note: '已准备', done: true },
         { id: 'insurance', text: '旅行保险' }
       ]
     },
@@ -1388,9 +1415,9 @@ window.TRIP = {
         { id: 'wagyu', text: '预约 12/3 晚上的和牛（19:30 左右）', note: '松阪牛焼肉M 法善寺横丁店官网可以在线预约，有中文页面；想省钱可以选モウモウ（约 5,000–6,000 日元，打电话预约）' },
         { id: 'vjw', text: 'Visit Japan Web 登记入境信息', note: '截图保存二维码' },
         { id: 'checkin', text: '北京 → 羽田在线值机' },
-        { id: 'suica', text: '手机里添加 Suica 交通卡', note: '安卓手机大多不能添加，到羽田后买 Welcome Suica' },
+        { id: 'suica', text: '日本交通卡', note: '已准备', done: true },
         { id: 'screenshots', text: '截图酒店确认单、所有门票二维码', note: '没网的时候也能用' },
-        { id: 'cash', text: '准备支付：信用卡 + 支付宝 / 微信', note: '日元现金可以落地后在 ATM 取' },
+        { id: 'cash', text: '日元现金', note: '已准备', done: true },
         { id: 'adapter', text: '转换插头', note: '日本是两扁脚插座，国内的三脚插头插不进去' },
         { id: 'overnight-bag', text: '随身过夜小包', note: '换洗衣物、洗漱用品、充电器、药品' }
       ]

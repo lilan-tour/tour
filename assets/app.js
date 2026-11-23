@@ -2,6 +2,7 @@
   'use strict';
 
   const T = window.TRIP;
+  const itinerary = [T.preparation, ...T.days];
   const $ = (sel, root = document) => root.querySelector(sel);
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
@@ -66,7 +67,7 @@
     const diff = Math.round((start - today) / DAY_MS);
     let html;
     if (diff > 0) {
-      html = `距离出发还有 <b>${diff}</b> 天`;
+      html = `距离出发还有 <b>${diff}</b> 天 · <a href="#day-0">11/27 出游检查</a>`;
     } else if (today <= end) {
       const n = Math.round((today - start) / DAY_MS) + 1;
       html = `旅行第 <b>${n}</b> 天 · <a href="#day-${n}">查看今天的行程</a>`;
@@ -161,10 +162,10 @@
 
   /* ───────────── Overview day cards ───────────── */
   function renderDayCards() {
-    $('#day-cards').innerHTML = T.days.map((d, i) => `
-      <a class="day-card" href="#day-${i + 1}">
+    $('#day-cards').innerHTML = itinerary.map((d, i) => `
+      <a class="day-card" href="#day-${i}">
         <div class="day-card-top">
-          <span class="day-no">DAY ${i + 1}</span>
+          <span class="day-no">DAY ${i}</span>
           <span class="day-date">${md(d.date)} ${esc(d.weekday)}</span>
         </div>
         <div class="day-card-city">${esc(d.city)}</div>
@@ -256,18 +257,18 @@
 
   /* ───────────── Day sections ───────────── */
   function renderDays() {
-    $('#day-chips').innerHTML = T.days.map((d, i) =>
-      `<a href="#day-${i + 1}" data-day="${i + 1}"><b>D${i + 1}</b><span>${md(d.date)}</span></a>`).join('');
+    $('#day-chips').innerHTML = itinerary.map((d, i) =>
+      `<a href="#day-${i}" data-day="${i}"><b>D${i}</b><span>${md(d.date)}</span></a>`).join('');
 
     const today = todayInTokyo().getTime();
 
-    $('#day-list').innerHTML = T.days.map((d, i) => {
+    $('#day-list').innerHTML = itinerary.map((d, i) => {
       const isToday = parseDate(d.date).getTime() === today;
       return `
-      <article class="day ${isToday ? 'is-today' : ''}" id="day-${i + 1}" data-day="${i + 1}">
+      <article class="day ${isToday ? 'is-today' : ''}" id="day-${i}" data-day="${i}">
         <header class="day-head">
           <div class="day-badge">
-            <span>DAY</span><b>${i + 1}</b>
+            <span>DAY</span><b>${i}</b>
           </div>
           <div class="day-head-main">
             <div class="day-head-date">${md(d.date)} ${esc(d.weekday)} · ${esc(d.city)}${isToday ? '<em class="today-tag">今天</em>' : ''}</div>
@@ -278,9 +279,13 @@
             </div>
             <div class="day-tags">${d.highlights.map((h) => `<span>${esc(h)}</span>`).join('')}</div>
           </div>
-          <button class="day-toggle" data-toggle="${i + 1}">展开本日</button>
+          ${d.items ? `<button class="day-toggle" data-toggle="${i}">展开本日</button>` : ''}
         </header>
-        <ol class="timeline">${d.items.map(renderItem).join('')}</ol>
+        ${d.checklist ? `
+          <p class="section-desc">打包时逐项勾选。勾选状态会保存在当前浏览器里。</p>
+          <div class="progress"><div class="progress-bar"></div><span></span></div>
+          <div class="checklist"></div>
+        ` : `<ol class="timeline">${d.items.map(renderItem).join('')}</ol>`}
         ${d.tips?.length ? `<div class="day-tips"><h5>${ICONS.note}今日提示</h5>${tipsList(d.tips)}</div>` : ''}
       </article>`;
     }).join('');
@@ -356,18 +361,18 @@
   }
 
   /* ───────────── Checklist ───────────── */
-  const STORE_KEY = 'japan-trip-2026-checklist';
-  function renderChecklist() {
+  function renderChecklist(section, groups, storageKey) {
     let state = {};
-    try { state = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (_) { /* ignore */ }
+    try { state = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch (_) { /* ignore */ }
 
-    $('#checklist').innerHTML = T.checklist.map((g) => `
+    const list = $('.checklist', section);
+    list.innerHTML = groups.map((g) => `
       <div class="check-group">
-        <div class="check-group-head"><h3>${esc(g.group)}</h3><span>${esc(g.due)}</span></div>
+        <div class="check-group-head"><h3>${esc(g.group)}</h3>${g.due ? `<span>${esc(g.due)}</span>` : ''}</div>
         <ul>${g.items.map((it) => `
           <li class="${it.urgent ? 'urgent' : ''}">
             <label>
-              <input type="checkbox" data-id="${esc(it.id)}" ${state[it.id] ? 'checked' : ''}/>
+              <input type="checkbox" data-id="${esc(it.id)}" ${(state[it.id] ?? it.done) ? 'checked' : ''}/>
               <span class="box"></span>
               <span class="check-text">
                 <b>${esc(it.text)}</b>${it.urgent ? '<em>急</em>' : ''}
@@ -378,17 +383,17 @@
       </div>`).join('');
 
     const update = () => {
-      const boxes = [...document.querySelectorAll('#checklist input[type=checkbox]')];
-      const done = boxes.filter((b) => b.checked).length;
-      $('#progress-bar').style.width = `${(done / boxes.length) * 100}%`;
-      $('#progress-text').textContent = `已完成 ${done} / ${boxes.length}`;
+      const boxes = [...list.querySelectorAll('input[type=checkbox]')];
+      const done = boxes.filter((box) => box.checked).length;
+      $('.progress-bar', section).style.width = `${(done / boxes.length) * 100}%`;
+      $('.progress span', section).textContent = `已完成 ${done} / ${boxes.length}`;
     };
 
-    $('#checklist').addEventListener('change', (e) => {
+    list.addEventListener('change', (e) => {
       const cb = e.target;
       if (!cb.matches('input[type=checkbox]')) return;
       state[cb.dataset.id] = cb.checked;
-      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) { /* ignore */ }
+      try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) { /* ignore */ }
       update();
     });
     update();
@@ -515,7 +520,8 @@
   renderGeo();
   renderDayCards();
   renderDays();
-  renderChecklist();
+  renderChecklist($('#day-0'), T.preparation.checklist, 'japan-trip-2026-packing');
+  renderChecklist($('#booking'), T.checklist, 'japan-trip-2026-checklist');
   renderShopping();
   renderInfo();
   bindToolbar();
