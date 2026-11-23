@@ -849,7 +849,8 @@ window.TRIP = {
             '5U 有 G5 和 G6 两种握柄，G6 更细。两种都在的话先握一下再选',
             '问店员能不能当场穿线、要等多久：可以先买拍去吃午饭，回来再取',
             '结账时出示护照办免税；按新规，要退税的话球拍必须放在随身行李里',
-            '可先打直营店电话 06-6110-5266，分别问 5U5、5U6 的现货和是否能留货',
+            '同店问 AEROSENSA 05 羽毛球（AS-05EX），目标 2–4 桶。YONEX 中国官网有此型号，大阪店库存待确认，按桶身货号核对。',
+            '可先打直营店电话 06-6110-5266，问 5U5、5U6 和 AS-05EX 的库存及能否留货',
             'YONEX 营业到 21:00，时间不够的话晚上也可以再回来'
           ]
         },
@@ -1241,7 +1242,7 @@ window.TRIP = {
 
     plan: [
       { when: '11/29（日）17:20', where: '国际卓球 涩谷店', what: '优先找蝴蝶 CS 直板：樊振东 ALC、张本智和 Innerforce ALC 或 Viscaria', tag: '球拍' },
-      { when: '12/3（四）11:00', where: 'YONEX 大阪直营店 · Grand Front 大阪南馆 B1', what: '必买 NANOFLARE 700 PRO（2NF-700P）5U，现场选 G5 或 G6', tag: '球拍' },
+      { when: '12/3（四）11:00', where: 'YONEX 大阪直营店 · Grand Front 大阪南馆 B1', what: '买 NANOFLARE 700 PRO（2NF-700P）5U，现场选 G5 或 G6；同店找 AS-05EX 羽毛球 2–4 桶', tag: '球拍' },
       { when: '11/30（一）先看，12/5（六）补齐', where: '东京御徒町 / 大阪心斋桥药妆店', what: '小林制药安美露 82 mL，共 4–6 瓶', tag: '药品' },
       { when: '11/29（日）下午', where: '涩谷', what: '黑五最后一个周末，看看涩谷 109、优衣库的打折', tag: '黑五' },
       { when: '11/30（一）中午', where: '本乡三丁目 · おかしのまちおか', what: '东大旁边的零食折扣店，先看看价格、买一点', tag: '零食' },
@@ -1275,11 +1276,12 @@ window.TRIP = {
       {
         id: 'priority-shopping',
         title: '必买与重点找',
-        sub: '安美露 · 羽毛球拍 · 乒乓球底板',
-        desc: '安美露总共 4–6 瓶。羽毛球拍认准 5U。蝴蝶优先找中国式直板短柄（CS），先试握再选。',
+        sub: '安美露 · 羽毛球拍与球 · 乒乓球底板',
+        desc: '安美露总共 4–6 瓶，AS05 羽毛球 2–4 桶。羽毛球拍认准 5U。蝴蝶优先找中国式直板短柄（CS），先试握再选。',
         items: [
           { name: '小林制药安美露（アンメルツヨコヨコ）× 4–6 瓶', price: '82 mL · 厂商建议价 670 日元/瓶（未税）', where: '11/30 御徒町先看；12/5 大阪心斋桥药妆店补齐', note: '给店员看日文品名和容量，结账前确认购买瓶数。' },
           { name: 'YONEX NANOFLARE 700 PRO · 5U', where: '12/3 大阪直营店 · Grand Front 大阪南馆 B1', note: '日文：ナノフレア700プロ。货号 2NF-700P。5U 平均约 78 克，现场试握 G5 或更细的 G6；先问库存。' },
+          { name: 'YONEX AEROSENSA 05 羽毛球 × 2–4 桶', where: '12/3 在大阪直营店一起询货', note: 'YONEX 中国官网货号：AS-05EX。大阪直营店库存待确认，问店员时直接报货号，核对桶身标识。' },
           { name: 'Butterfly 中国式直板底板（CS）', price: '三款日本官方含税定价 19,800–22,000 日元（底板）', where: '11/29 国际卓球涩谷店；大阪备选本町卓球センター或难波ハマダ卓球', note: '首选樊振东 ALC-CS（24180，19,800 日元）；偏控球选张本智和 Innerforce ALC-CS（24030，19,800 日元）；喜欢直接出球和较细拍柄，试 Viscaria-CS（24010，22,000 日元）。请店员称一下有货的裸板；需要胶皮时另询价。' }
         ]
       },
@@ -1401,6 +1403,7 @@ window.TRIP = {
     sources: [
       { text: '小林制药 · 安美露 82 mL', url: 'https://www.kobayashi.co.jp/seihin/an_y/' },
       { text: 'YONEX · NANOFLARE 700 PRO 规格', url: 'https://yonexshop.jp/item/detail/1_1_2NF-700P_1/' },
+      { text: 'YONEX 中国 · AEROSENSA 05（AS-05EX）', url: 'https://www.yonex.cn/home/index/mall_detail/id/75' },
       { text: 'YONEX · 大阪直营店', url: 'https://www.yonex.co.jp/company/access/' },
       { text: 'Butterfly · 樊振东 ALC-CS', url: 'https://www.butterfly.co.jp/products/detail/24180.html' },
       { text: 'Butterfly · 张本智和 Innerforce ALC-CS', url: 'https://www.butterfly.co.jp/products/detail/24030.html' },
@@ -1456,7 +1459,7 @@ window.TRIP = {
       due: '11/14–11/27',
       items: [
         { id: 'alc-stock', text: '问国际卓球涩谷店：蝴蝶 CS 中国式直板库存', note: '通过门店 LINE 或 03-3463-1660 问 24180、24030、24010，并确认是 CS 短柄' },
-        { id: 'yonex-stock', text: '问 YONEX 大阪直营店：NF 700 PRO 5U 库存', note: '电话 06-6110-5266，报货号 2NF-700P，分别问 5U5、5U6' },
+        { id: 'yonex-stock', text: '问 YONEX 大阪直营店：NF 700 PRO 5U 和 AS05 库存', note: '电话 06-6110-5266，报 2NF-700P（5U5 或 5U6）和 AS-05EX（2–4 桶）' },
         { id: 'racket-cabin', text: '在航空公司官网确认球拍能不能随身带上飞机', note: '要退税的话球拍必须随身带；国内段和回北京的航班都要确认' }
       ]
     },
