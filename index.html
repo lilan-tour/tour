@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#b8322a" />
+  <meta name="description" content="2026 年 11 月底 · 东京 → 京都 → 大阪 9 天 8 晚红叶季自由行攻略" />
+  <title>红叶季 · 日本 9 日自由行</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">红叶季 · 日本行</a>
+    <nav class="topnav">
+      <a href="#overview">总览</a>
+      <a href="#days">每日行程</a>
+      <a href="#booking">预约清单</a>
+      <a href="#shopping">购物</a>
+      <a href="#info">实用信息</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-kicker">2026.11.28 – 12.06 · 一人旅</p>
+        <h1>东京 · 京都 · 大阪</h1>
+        <p class="hero-sub">9 天 8 晚 · 红叶与银杏最好的时节</p>
+        <div class="hero-stats" id="hero-stats"></div>
+        <div class="countdown" id="countdown"></div>
+      </div>
+      <div class="hero-leaves" aria-hidden="true"></div>
+    </section>
+
+    <section id="overview" class="section">
+      <h2 class="section-title"><span>総覧</span>行程总览</h2>
+
+      <div class="route" id="route"></div>
+
+      <div class="overview-grid">
+        <div class="card flights-card">
+          <h3>航班</h3>
+          <div id="flights"></div>
+        </div>
+        <div class="card map-card">
+          <h3>城市示意图</h3>
+          <div id="geo"></div>
+        </div>
+      </div>
+
+      <div class="day-cards" id="day-cards"></div>
+    </section>
+
+    <section id="days" class="section">
+      <h2 class="section-title"><span>日程</span>每日行程</h2>
+
+      <div class="toolbar" id="toolbar">
+        <div class="day-chips" id="day-chips"></div>
+        <div class="filters" id="filters">
+          <button data-filter="all" class="active">全部</button>
+          <button data-filter="spot">景点</button>
+          <button data-filter="transit">交通</button>
+          <button data-filter="meal">餐食</button>
+        </div>
+        <div class="expand-all">
+          <button id="expand-all">全部展开</button>
+          <button id="collapse-all">全部收起</button>
+        </div>
+      </div>
+
+      <div id="day-list"></div>
+    </section>
+
+    <section id="booking" class="section">
+      <h2 class="section-title"><span>予約</span>预约清单</h2>
+      <p class="section-desc">勾选状态会保存在当前浏览器里。</p>
+      <div class="progress"><div class="progress-bar" id="progress-bar"></div><span id="progress-text"></span></div>
+      <div id="checklist"></div>
+    </section>
+
+    <section id="shopping" class="section">
+      <h2 class="section-title"><span>買物</span>购物清单</h2>
+      <p class="section-desc shop-intro" id="shop-intro"></p>
+      <h3 class="sub-title">什么时候买</h3>
+      <div class="shop-plan" id="shop-plan"></div>
+      <div class="black-friday" id="black-friday"></div>
+      <h3 class="sub-title">买什么</h3>
+      <div class="shop-tabs" id="shop-tabs"></div>
+      <div id="shop-cats"></div>
+      <h3 class="sub-title">去哪买</h3>
+      <div class="shop-places" id="shop-places"></div>
+      <div class="card shop-rules" id="shop-rules"></div>
+    </section>
+
+    <section id="info" class="section">
+      <h2 class="section-title"><span>情報</span>实用信息</h2>
+      <div class="info-grid" id="info-grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>信息整理于 2026 年 10 月。开放时间、票价、餐厅营业时间可能变动，出发前请以官网和 Google 地图为准。</p>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
