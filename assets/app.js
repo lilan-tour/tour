@@ -557,6 +557,90 @@
       </div>`).join('');
   }
 
+  /* ───────────── Page outline ───────────── */
+  function bindOutline() {
+    const outline = $('#page-outline');
+    const toggle = $('.outline-toggle', outline);
+    const list = $('#outline-list', outline);
+    const sections = [...document.querySelectorAll('main > .section')];
+    const targets = [];
+    const label = (heading) => [...heading.childNodes]
+      .filter((node) => node.nodeType === Node.TEXT_NODE)
+      .map((node) => node.textContent).join('').trim();
+
+    list.innerHTML = sections.map((section) => {
+      const title = label($('.section-title', section));
+      const branchId = `outline-${section.id}`;
+      targets.push({ id: section.id, section: section.id, element: section });
+      const children = [...section.querySelectorAll('h3')].map((heading, index) => {
+        const day = heading.closest('.day');
+        const element = day || heading;
+        element.id ||= `${section.id}-heading-${index + 1}`;
+        targets.push({ id: element.id, section: section.id, element });
+        const date = day ? `${md(itinerary[Number(day.dataset.day)].date)} · ` : '';
+        return `<li><a href="#${element.id}">${esc(date + heading.textContent.trim())}</a></li>`;
+      });
+      return `
+        <li>
+          <div class="outline-row">
+            <a href="#${section.id}">${esc(title)}</a>
+            <button type="button" class="outline-branch" aria-label="${esc(title)}子标题"
+              aria-controls="${branchId}" aria-expanded="false">${ICONS.chevron}</button>
+          </div>
+          <ul class="outline-children" id="${branchId}" hidden>${children.join('')}</ul>
+        </li>`;
+    }).join('');
+
+    const links = new Map([...list.querySelectorAll('a')].map((link) => [link.hash.slice(1), link]));
+    const branches = new Map([...list.querySelectorAll('.outline-branch')].map((button) =>
+      [button.getAttribute('aria-controls'), button]));
+    const setBranch = (button, open) => {
+      button.setAttribute('aria-expanded', String(open));
+      document.getElementById(button.getAttribute('aria-controls')).hidden = !open;
+    };
+    const setPanel = (open) => toggle.setAttribute('aria-expanded', String(open));
+    let current;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const threshold = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 118;
+      const active = targets.findLast((target) => target.element.getBoundingClientRect().top <= threshold + 2);
+      if (active === current) return;
+      if (current) links.get(current.id).removeAttribute('aria-current');
+      if (active) {
+        links.get(active.id).setAttribute('aria-current', 'location');
+        if (active.section !== current?.section) setBranch(branches.get(`outline-${active.section}`), true);
+      }
+      current = active;
+    };
+
+    list.addEventListener('click', (event) => {
+      const branch = event.target.closest('.outline-branch');
+      if (branch) setBranch(branch, branch.getAttribute('aria-expanded') === 'false');
+      const link = event.target.closest('a');
+      if (link && getComputedStyle(toggle).display !== 'none') {
+        setPanel(false);
+        document.getElementById(link.hash.slice(1)).setAttribute('tabindex', '-1');
+        document.getElementById(link.hash.slice(1)).focus({ preventScroll: true });
+      }
+    });
+    toggle.addEventListener('click', () => setPanel(toggle.getAttribute('aria-expanded') === 'false'));
+    outline.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setPanel(false);
+        toggle.focus();
+      }
+    });
+    window.addEventListener('scroll', () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    const initial = targets.find((target) => `#${target.id}` === window.location.hash);
+    setBranch(branches.get(`outline-${initial?.section || 'overview'}`), true);
+    outline.hidden = false;
+    update();
+  }
+
   renderHero();
   renderRoute();
   renderFlights();
@@ -568,4 +652,5 @@
   renderShopping();
   renderInfo();
   bindToolbar();
+  bindOutline();
 })();

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#b8322a" />
   <meta name="description" content="2026 年 11 月底 · 东京 → 京都 → 大阪 9 天 8 晚红叶季自由行攻略" />
   <title>红叶季 · 日本 9 日自由行</title>
-  <link rel="stylesheet" href="assets/style.css?v=romaji-20261123" />
+  <link rel="stylesheet" href="assets/style.css?v=outline-20261123" />
 </head>
 <body>
   <header class="topbar">
@@ -21,7 +21,15 @@
     </nav>
   </header>
 
-  <main id="top">
+  <div class="page-layout">
+    <aside class="page-outline" id="page-outline" aria-label="页面目录" hidden>
+      <button class="outline-toggle" type="button" aria-controls="outline-nav" aria-expanded="false">目录</button>
+      <nav id="outline-nav" class="outline-nav" aria-label="专区和子标题">
+        <h2>页面目录</h2>
+        <ul id="outline-list" class="outline-list"></ul>
+      </nav>
+    </aside>
+    <main id="top">
     <section class="hero">
       <div class="hero-inner">
         <p class="hero-kicker">2026.11.28 – 12.06 · 一人旅</p>
@@ -385,13 +393,14 @@
       <h2 class="section-title"><span>情報</span>实用信息</h2>
       <div class="info-grid" id="info-grid"></div>
     </section>
-  </main>
+    </main>
+  </div>
 
   <footer class="footer">
     <p>信息整理于 2026 年 10 月。开放时间、票价、餐厅营业时间可能变动，出发前请以官网和 Google 地图为准。</p>
   </footer>
 
   <script src="assets/data.js?v=prices-20261123"></script>
-  <script src="assets/app.js?v=prices-20261123"></script>
+  <script src="assets/app.js?v=outline-20261123"></script>
 </body>
 </html>
