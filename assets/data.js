@@ -301,6 +301,7 @@ window.TRIP = {
           tips: [
             '地址：道玄坂 1-15-3 Primera 道玄坂 1 楼。推荐路线：从涩谷站进 Mark City，上到 4 楼，穿过餐厅街从左边的「玉川通出口」出去，右手边蓝色雨棚的大楼 1 楼就是（入口在楼的另一侧）',
             '试打每人 5 分钟以内，人多时可能排不上',
+            '配胶：正手黑色 Glayzer 1.9 mm（6,050 日元），反手红色 Rozena 1.9 mm（5,500 日元）。两张合计 11,550 日元，贴之前请店员报贴胶费并估算整拍重量。',
             '先问樊振东 ALC-CS（24180）；偏控球就试张本智和 Innerforce ALC-CS（24030）；喜欢直接的出球和较细拍柄，可试 Viscaria-CS（24010）。找包装上的「CS / 中国式ペン」',
             '同一型号的底板每块重量不一样，可以请店员拿几块称重挑选；买胶皮可以问能不能帮忙粘贴',
             '结账时带上护照问能不能免税；按新规，要退税的话球拍必须随身带',
@@ -1222,7 +1223,8 @@ window.TRIP = {
           stay: '30 分钟',
           tips: [
             'ROYCE 在 CENTRAL 和 SOUTH 都有卖，更建议买常温的薯片巧克力，生巧克力含鲜奶油，带回国有风险',
-            '种类比市区少，普通零食比超市贵，这里只买送人的盒装伴手礼',
+            '朋友的抹茶饼干优先买，包装待确认。候选：T3 出境后 3F 的 BOOKS & DRUGS SOUTH（07:00 开）找伊藤久右卫门「葉ごろも」，或到 TIAT DUTY FREE SHOP SOUTH 找 YOKU MOKU 抹茶蛋卷。先核对登机口和登机时间。',
+            '种类比市区少，这里主要买送人的盒装伴手礼',
             '想买的东西担心卖完的话，TIAT 免税店可以提前在网上预订，当天付款取货',
             '登机口一般在起飞前 30 分钟开始登机，注意时间'
           ]
@@ -1251,7 +1253,7 @@ window.TRIP = {
       { when: '12/1（二）10:30 或中午', where: '京都站（刚下新干线）· 大丸京都店', what: '抹茶伴手礼：茶の菓、京ばあむ、京都雷神巧克力（12/3 坐阪急走，不经过京都站）', tag: '伴手礼' },
       { when: '12/5（六）下午', where: '心斋桥 · 难波', what: '补齐安美露；眼药水和止痒药按需，唐吉诃德补零食', tag: '药品' },
       { when: '12/6（日）6:00', where: '羽田 T1 特选洋菓子馆（住 T1 的话）', what: '东京香蕉、砂糖黄油树、东京牛奶芝士工厂', tag: '伴手礼' },
-      { when: '12/6（日）出境后', where: '羽田 T3 免税店', what: 'ROYCE、YOKU MOKU，不收消费税', tag: '伴手礼' }
+      { when: '12/6（日）出境后', where: '羽田 T3 免税店', what: '优先帮朋友买抹茶饼干（包装待确认），再补 ROYCE 等盒装伴手礼', tag: '伴手礼' }
     ],
 
     blackFriday: {
@@ -1280,9 +1282,11 @@ window.TRIP = {
         desc: '安美露总共 4–6 瓶，AS05 羽毛球 2–4 桶。羽毛球拍认准 5U。蝴蝶优先找中国式直板短柄（CS），先试握再选。',
         items: [
           { name: '小林制药安美露（アンメルツヨコヨコ）× 4–6 瓶', price: '82 mL · 厂商建议价 670 日元/瓶（未税）', where: '11/30 御徒町先看；12/5 大阪心斋桥药妆店补齐', note: '给店员看日文品名和容量，结账前确认购买瓶数。' },
-          { name: 'YONEX NANOFLARE 700 PRO · 5U', where: '12/3 大阪直营店 · Grand Front 大阪南馆 B1', note: '日文：ナノフレア700プロ。货号 2NF-700P。5U 平均约 78 克，现场试握 G5 或更细的 G6；先问库存。' },
-          { name: 'YONEX AEROSENSA 05 羽毛球 × 2–4 桶', where: '12/3 在大阪直营店一起询货', note: 'YONEX 中国官网货号：AS-05EX。大阪直营店库存待确认，问店员时直接报货号，核对桶身标识。' },
-          { name: 'Butterfly 中国式直板底板（CS）', price: '三款日本官方含税定价 19,800–22,000 日元（底板）', where: '11/29 国际卓球涩谷店；大阪备选本町卓球センター或难波ハマダ卓球', note: '首选樊振东 ALC-CS（24180，19,800 日元）；偏控球选张本智和 Innerforce ALC-CS（24030，19,800 日元）；喜欢直接出球和较细拍柄，试 Viscaria-CS（24010，22,000 日元）。请店员称一下有货的裸板；需要胶皮时另询价。' }
+          { name: 'YONEX NANOFLARE 700 PRO · 5U', price: '日本官网 34,100 日元（含税）', where: '12/3 大阪直营店 · Grand Front 大阪南馆 B1', note: '日文：ナノフレア700プロ。货号 2NF-700P。5U 平均约 78 克，现场试握 G5 或更细的 G6；先问库存。' },
+          { name: 'YONEX AEROSENSA 05 羽毛球 × 2–4 桶', price: '中国官网 370 元人民币/桶 · 大阪售价待询', referenceCny: 370, where: '12/3 在大阪直营店一起询货', note: 'YONEX 中国官网货号：AS-05EX。大阪直营店库存待确认，问店员时直接报货号，核对桶身标识。' },
+          { name: 'Butterfly 中国式直板底板（CS）', price: '三款日本官方含税定价 19,800–22,000 日元（底板）', where: '11/29 国际卓球涩谷店；大阪备选本町卓球センター或难波ハマダ卓球', note: '首选樊振东 ALC-CS（24180，19,800 日元）；偏控球选张本智和 Innerforce ALC-CS（24030，19,800 日元）；喜欢直接出球和较细拍柄，试 Viscaria-CS（24010，22,000 日元）。请店员称一下有货的裸板。' },
+          { name: '蝴蝶正手胶皮 · 黑色 Glayzer 1.9 mm', price: '6,050 日元（日本官网含税）', where: '11/29 国际卓球涩谷店 · グレイザー 黒 1.9 mm', note: '和底板一起问库存，请店员报价并确认是否可以贴好。' },
+          { name: '蝴蝶反手胶皮 · 红色 Rozena 1.9 mm', price: '5,500 日元（日本官网含税）', where: '11/29 国际卓球涩谷店 · ロゼナ 赤 1.9 mm', note: '两张胶皮合计 11,550 日元；底板、贴胶费另计。' }
         ]
       },
       {
@@ -1342,6 +1346,8 @@ window.TRIP = {
           { name: '东京牛奶芝士工厂 蜂蜜芝士饼干', price: '约 1,000–1,500 日元', where: '东京站 · 羽田 T1 特选洋菓子馆', note: '咸甜的芝士饼干。烤过的饼干一般没问题，但含芝士，以海关现场为准', city: '东京' },
           { name: 'COCORIS 坚果夹心饼干', price: '约 1,000–2,500 日元', where: '东京站 Gransta（检票口内）', note: '东京站限定伴手礼销量第一名', city: '东京' },
           { name: 'PRESS BUTTER SAND 焦糖奶油夹心饼', price: '约 1,000–2,000 日元', where: '东京站 Gransta 银之铃区 · 羽田 T1', note: '10/22 起东京站还开了 10 周年限定店，有东京站限定款', city: '东京' },
+          { name: '帮朋友买抹茶饼干 · 候选：伊藤久右卫门「葉ごろも」', price: '10 枚 1,490 日元（品牌官网含税参考）', where: '12/6 羽田 T3 出境后 3F · BOOKS & DRUGS SOUTH（07:00–24:00）', note: '品牌列明这家店销售 10 枚装抹茶猫舌饼。朋友指定的包装待确认，机场售价和当天库存以现场为准。', city: '机场' },
+          { name: '免税备选 · YOKU MOKU Cigare au matcha', price: '14 支 2,900 日元（ANA 免税网站挂牌价）', where: '12/6 羽田 T3 出境后 3F · TIAT DUTY FREE SHOP SOUTH LIQUOR & TOBACCO（06:00–24:30）', note: '宇治抹茶夹心蛋卷。ANA 商品页列出 T3 南侧门店，查询时线上显示售罄，出发前可再查，现场库存待确认。', city: '机场' },
           { name: 'YOKU MOKU 雪茄蛋卷（Cigare）', price: '约 1,000–2,000 日元', where: '羽田 T3 出境后 TIAT CENTRAL · TOKYO SOUVENIR SHOP NORTH', note: '黄油味很浓的蛋卷，铁盒包装很体面，出境后就能买', city: '机场' },
           { name: 'ROYCE 薯片巧克力 / 生巧克力', price: '约 900–1,200 日元', where: '羽田 T3 出境后 TIAT CENTRAL · SOUTH', note: '北海道品牌，羽田出境后就能买。生巧克力要冷藏而且含鲜奶油，带回国有被海关拦下的风险，更建议买常温的薯片巧克力', city: '机场' },
           { name: '茶の菓（Malebranche 浓茶猫舌饼）', price: '8 枚 1,521 日元', where: '京都站（新干线检票口内、京都塔 SAND 等）· 京都的百货公司', note: '京都伴手礼的代表，抹茶饼干夹白巧克力，保质期约 2 周', city: '京都' },
@@ -1371,7 +1377,7 @@ window.TRIP = {
             name: '蚊虫叮咬止痒',
             items: [
               { name: '液体无比滴 S（液体ムヒS）', price: '50ml 约 400 日元', where: 'Sundrug · 大国药妆', note: '最经典的止痒液，涂上去凉凉的，日常蚊子包够用了' },
-              { name: '液体无比滴 Alpha EX（液体ムヒアルファEX）', price: '35ml 约 760–800 日元（定价 1,320）', where: '药妆店', note: '加了弱效类固醇，对付特别痒、肿的叮咬，6 个月以上就能用' },
+              { name: '液体无比滴 Alpha EX（液体ムヒアルファEX）', price: '35ml 约 760–800 日元（定价 1,320 日元）', where: '药妆店', note: '加了弱效类固醇，对付特别痒、肿的叮咬，6 个月以上就能用' },
               { name: '无比滴 Alpha EX 软膏（ムヒアルファEX）', price: '15g 约 720 日元', where: '药妆店', note: '软膏版，不是液体，过安检更省心' },
               { name: '无比滴止痒贴（ムヒパッチ）', price: '38 片约 290 日元，76 片约 500 日元', where: '药妆店', note: '贴在包上防止抓挠，小孩也能用，很适合送人' }
             ]
@@ -1409,6 +1415,13 @@ window.TRIP = {
       { text: 'Butterfly · 张本智和 Innerforce ALC-CS', url: 'https://www.butterfly.co.jp/products/detail/24030.html' },
       { text: 'Butterfly · Viscaria-CS', url: 'https://www.butterfly.co.jp/products/detail/24010.html' },
       { text: '国際卓球 · 涩谷店', url: 'https://www.kokusaitakkyu.com/html/page3.html' },
+      { text: 'Butterfly · Glayzer 胶皮', url: 'https://www.butterfly.co.jp/products/detail/06100.html' },
+      { text: 'Butterfly · Rozena 胶皮', url: 'https://www.butterfly.co.jp/products/detail/06020.html' },
+      { text: '伊藤久右卫门 · 葉ごろも 10 枚装', url: 'https://www.itohkyuemon.co.jp/c/sweets/094426' },
+      { text: '伊藤久右卫门 · 羽田 T3 取扱清单', url: 'https://www.itohkyuemon.co.jp/corporate/wp-content/uploads/2026/06/shop-260531.pdf' },
+      { text: '羽田 T3 · BOOKS & DRUGS SOUTH', url: 'https://tokyo-haneda.com/shop_and_dine/detail/tenant_00094.html' },
+      { text: 'ANA 免税 · YOKU MOKU 抹茶蛋卷', url: 'https://www.anadf.com/en/ItemDetail.aspx?S_CD=7011100216' },
+      { text: 'ANA 免税 · 羽田 T3 南侧门店', url: 'https://www.anadf.com/content/hndt3landt' },
       { text: 'Butterfly · 大阪会员店', url: 'https://www.butterfly.co.jp/shop/osaka/' },
       { text: '羽田机场 · T1 特选洋菓子馆', url: 'https://tokyo-haneda.com/shop_and_dine/detail/tenant_00294.html' },
       { text: '羽田机场 · TIAT DUTY FREE SHOP CENTRAL', url: 'https://tokyo-haneda.com/shop_and_dine/detail/tenant_00148.html' },

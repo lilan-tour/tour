@@ -402,13 +402,54 @@
   /* ───────────── Shopping ───────────── */
   const SHOP_TAG = { 零食: 'gold', 伴手礼: 'red', 黑五: 'ink', 药品: 'green' };
 
+  function shopPrice(item) {
+    const yenPrices = esc(item.price).replace(/(\d[\d,]*)(?:[–-](\d[\d,]*))? 日元/g,
+      (price, low, high) => `${price}<span data-yen-low="${low.replace(/,/g, '')}" data-yen-high="${high?.replace(/,/g, '') ?? ''}"></span>`);
+    const yenReference = item.referenceCny
+      ? `<span data-cny-reference="${item.referenceCny}"></span>` : '';
+    return yenPrices + yenReference;
+  }
+
+  async function updateShopExchange() {
+    const label = $('#shop-exchange');
+    const format = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 0 });
+    const fallback = { date: '2026-11-23', rate: 0.042152 };
+    const applyRate = ({ date, rate }, source, url) => {
+      label.innerHTML = `参考汇率 ${date} · 100 日元 ≈ ${(rate * 100).toFixed(2)} 元人民币 · <a href="${url}" target="_blank" rel="noopener">${source}</a>。商品为参考价，结算以现场为准。`;
+      document.querySelectorAll('#shop-cats [data-yen-low]').forEach((element) => {
+        const { yenLow, yenHigh } = element.dataset;
+        const low = format.format(yenLow * rate);
+        const high = yenHigh && format.format(yenHigh * rate);
+        element.textContent = `（约 ${low}${high && high !== low ? `–${high}` : ''} 元人民币）`;
+      });
+      document.querySelectorAll('#shop-cats [data-cny-reference]').forEach((element) => {
+        element.textContent = ` · 中国价折合约 ${format.format(element.dataset.cnyReference / rate)} 日元/桶`;
+      });
+    };
+
+    applyRate(fallback, '中国银行折算价', 'https://www.boc.cn/sourcedb/whpj/');
+    try {
+      const response = await fetch('https://api.frankfurter.dev/v2/rate/JPY/CNY', {
+        credentials: 'omit',
+        signal: AbortSignal.timeout(5000)
+      });
+      if (!response.ok) return;
+      const quote = await response.json();
+      if (quote.base === 'JPY' && quote.quote === 'CNY' &&
+          /^\d{4}-\d{2}-\d{2}$/.test(quote.date) && quote.date >= fallback.date &&
+          Number.isFinite(quote.rate) && quote.rate > 0) {
+        applyRate(quote, 'Frankfurter 日度参考价', 'https://frankfurter.dev/');
+      }
+    } catch (_) { /* Keep the dated fallback quote. */ }
+  }
+
   const shopItem = (it) => `
     <div class="shop-item">
       <div class="shop-item-head">
         <b>${esc(it.name)}</b>
         ${it.city ? `<span class="city-badge">${esc(it.city)}</span>` : ''}
       </div>
-      ${it.price ? `<div class="shop-price">${ICONS.yen}${esc(it.price)}</div>` : ''}
+      ${it.price ? `<div class="shop-price">${ICONS.yen}<span>${shopPrice(it)}</span></div>` : ''}
       <div class="shop-where">${ICONS.spot}${esc(it.where)}</div>
       ${it.note ? `<p>${esc(it.note)}</p>` : ''}
     </div>`;
@@ -447,6 +488,8 @@
           : `<div class="shop-items">${c.items.map(shopItem).join('')}</div>`}
         ${c.tip ? `<p class="shop-cat-tip">${ICONS.note}${esc(c.tip)}</p>` : ''}
       </div>`).join('');
+
+    updateShopExchange();
 
     const BF = S.blackFriday;
     if (BF) {
