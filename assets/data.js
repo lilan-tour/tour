@@ -985,7 +985,7 @@ window.TRIP = {
         },
         {
           time: '07:50', type: 'note', title: '抵达入口 · 排队等入园',
-          summary: '到达时间为计划，前一晚查官方开园时间',
+          summary: '12/4 营业 09:00–19:00，目标提前约 70 分钟到',
           intro: '过闸后先确认任天堂区域入场凭证或在 App 领券。',
           tips: [
             '提前下载环球影城官方 App，门票绑定到 App 里（如果在国区商店搜不到，可能需要用其他地区的账号下载）',
@@ -1023,20 +1023,27 @@ window.TRIP = {
           ]
         },
         {
-          time: '14:30', type: 'spot', title: '其他热门项目', map: 'Universal Studios Japan',
+          time: '14:30', type: 'spot', title: '机动项目', map: 'Universal Studios Japan',
           summary: '刺激项目和小黄人',
           intro: '下午按 App 上的排队时间挑着玩：',
-          stay: '下午到傍晚',
+          stay: '建议到 16:45',
           tips: [
             '飞天翼龙：趴着飞的过山车，全园最刺激',
             '好莱坞美梦乘车：可以选背景音乐的过山车',
             '小黄人乐园：适合拍照、买周边',
-            '很多项目有单人通道（Single Rider），一个人去能省很多排队时间',
-            '圣诞夜秀在 Gramercy Park，官方常规场次为 17:30、19:30，12/4 以当天节目表为准'
+            '很多项目有单人通道（Single Rider），一个人去能省很多排队时间'
           ]
         },
         {
-          time: '19:00', type: 'meal', title: '晚餐',
+          time: '17:30', type: 'spot', title: '圣诞夜秀（如当天有早场）', optional: true,
+          summary: 'Gramercy Park · 场次以当天 App 为准'
+        },
+        {
+          time: '18:40', type: 'note', title: '准备出园',
+          summary: '19:00 闭园，预留时间走到出口'
+        },
+        {
+          time: '19:00后', type: 'meal', title: '园外晚餐',
           options: [
             { name: 'Universal CityWalk', kind: '园外美食街', price: '约 1,000–2,000 日元', note: '出园后就在车站旁，选择很多' },
             { name: '回酒店附近吃', kind: '拉面 · 定食 · 便利店', price: '约 1,000 日元', note: '南船场一带有很多本地人去的小餐馆，酒店对面就有一家拉面店' }
