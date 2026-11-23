@@ -505,6 +505,9 @@ button { font: inherit; color: inherit; }
 .phrase-list > div { padding: 9px 0; }
 .phrase-list dt { color: var(--ink-2); font-size: 14px; }
 .phrase-list dd { margin: 2px 0 0; font-size: 16px; font-weight: 600; }
+.phrase-list .phrase-reading { margin-top: 4px; font-size: 14px; font-weight: 400; }
+.phrase-reading summary { width: fit-content; padding: 5px 0; color: var(--red); cursor: pointer; }
+.phrase-reading p { margin: 0 0 4px; color: var(--ink-2); overflow-wrap: anywhere; }
 .info-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .info-links a { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--red); text-decoration: none; border: 1px solid currentColor; padding: 3px 10px; border-radius: 999px; }
 
