@@ -281,6 +281,7 @@
           </div>
           ${d.items ? `<button class="day-toggle" data-toggle="${i}">展开本日</button>` : ''}
         </header>
+        ${d.guide ? `<p class="info-links"><a href="#${esc(d.guide.id)}">${esc(d.guide.label)}</a></p>` : ''}
         ${d.checklist ? `
           <p class="section-desc">打包时逐项勾选。勾选状态会保存在当前浏览器里。</p>
           <div class="progress"><div class="progress-bar"></div><span></span></div>
