@@ -222,6 +222,9 @@
       h += `<dl class="facts">${facts.map(([ic, k, v]) => `<div><dt>${ic}${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
     }
     h += tipsList(it.tips);
+    if (it.booking) {
+      h += `<a class="map-link" href="${esc(it.booking.url)}" target="_blank" rel="noopener">${ICONS.ticket}${esc(it.booking.text)}</a>`;
+    }
     if (it.map) h += `<a class="map-link" href="${mapUrl(it.map)}" target="_blank" rel="noopener">${ICONS.map}在 Google 地图中打开</a>`;
     return h;
   }
@@ -229,7 +232,7 @@
   function hasBody(it) {
     if (it.type === 'transit') return !!(it.steps?.length || it.tips?.length);
     if (it.type === 'meal') return !!it.options?.length;
-    return !!(it.intro || it.hours || it.ticket || it.stay || it.tips?.length || it.map);
+    return !!(it.intro || it.hours || it.ticket || it.stay || it.tips?.length || it.booking || it.map);
   }
 
   function renderItem(it) {
