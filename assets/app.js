@@ -139,7 +139,7 @@
     }).join('');
 
     $('#geo').innerHTML = `
-      <svg class="geo" viewBox="0 0 ${W} ${H}" role="img" aria-label="行程城市示意图">
+      <svg class="geo" viewBox="0 0 ${W} ${H}" role="img" aria-label="行程城市示意图，东京往京都的新干线右侧可看富士山">
         <defs>
           <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
             <circle cx="1.5" cy="1.5" r="1" class="geo-dot"/>
@@ -150,12 +150,12 @@
         <g class="geo-fuji">
           <path d="M${fuji.x - 11},${fuji.y + 8} L${fuji.x},${fuji.y - 9} L${fuji.x + 11},${fuji.y + 8} Z"/>
           <path class="cap" d="M${fuji.x - 4},${fuji.y - 2.5} L${fuji.x},${fuji.y - 9} L${fuji.x + 4},${fuji.y - 2.5} Z"/>
-          <text x="${fuji.x}" y="${fuji.y + 24}" text-anchor="middle">富士山（新干线车窗）</text>
+          <text x="${fuji.x}" y="${fuji.y + 24}" text-anchor="middle">富士山 · 右侧车窗</text>
         </g>
         ${nodes}
         <g class="geo-legend" transform="translate(${pad - 20}, ${H - 18})">
-          <line class="geo-rail main" x1="0" y1="0" x2="22" y2="0"/><text x="28" y="4">铁路</text>
-          <path class="geo-fly" d="M74,0 L96,0"/><text x="102" y="4">飞机</text>
+          <line class="geo-rail main" x1="0" y1="0" x2="22" y2="0"/><text x="28" y="4">新干线 · 东京 → 京都</text>
+          <path class="geo-fly" d="M150,0 L172,0"/><text x="178" y="4">飞机</text>
         </g>
       </svg>`;
   }
